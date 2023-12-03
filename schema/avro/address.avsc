@@ -1,1 +1,19 @@
-{"name": "address", "type": [{"fields": [{"name": "street_address", "type": ["string", "null"]}], "name": "preferred", "type": "record"}, "null"]}
+{
+    "name": "address",
+    "type": [
+        {
+            "fields": [
+                {
+                    "name": "street_address",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            ],
+            "name": "preferred",
+            "type": "record"
+        },
+        "null"
+    ]
+}

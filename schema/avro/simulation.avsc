@@ -1,1 +1,16 @@
-{}
+{
+    "doc": "main simulation object",
+    "fields": [
+        {
+            "name": "symbol",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        }
+    ],
+    "name": "simulation",
+    "namespace": "domain",
+    "type": "record"
+}

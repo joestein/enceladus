@@ -1,1 +1,16 @@
-{}
+{
+    "doc": "main portfolio object",
+    "fields": [
+        {
+            "name": "symbol",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        }
+    ],
+    "name": "portfolio",
+    "namespace": "domain",
+    "type": "record"
+}

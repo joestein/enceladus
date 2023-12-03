@@ -2,8 +2,8 @@ import unittest
 from io import BytesIO
 import avro
 from avro.io import BinaryEncoder, BinaryDecoder, DatumReader
-from domain.user import User
-from domain.address import Address
+from domain.objects import User
+from domain.objects import Address
 import json
 
 #handles testing of objects like the address TODO move to utils
@@ -55,7 +55,7 @@ class TestUser(unittest.TestCase):
         reader = DatumReader(schema)
         user_read = reader.read(decoder)
 
-        self.assertEqual(to_dict(user), user_read)        
+        self.assertEqual(to_dict(user), user_read)     
 
 if __name__ == '__main__':
     unittest.main()
