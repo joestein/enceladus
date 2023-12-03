@@ -2,5 +2,5 @@
 set -e
 
 export PYTHONPATH=$(pwd)
-jsonnet schema/user.jsonnet > schema/avro/user.avsc
+python3 schemas_to_avro.py
 python3 tests/schema.py
