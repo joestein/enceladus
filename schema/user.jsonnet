@@ -4,7 +4,6 @@ local email = avro.Field("email");
 local firstName = avro.Field("firstName");
 local lastName = avro.Field("lastName");
 
-
 local address = import 'address.jsonnet';
 
 local user = avro.Record(
