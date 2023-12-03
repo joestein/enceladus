@@ -1,1 +1,27 @@
-{}
+{
+    "doc": "main position object",
+    "fields": [
+        {
+            "name": "price",
+            "type": {
+                "doc": "main ticker object",
+                "fields": [
+                    {
+                        "name": "symbol",
+                        "type": "string"
+                    },
+                    {
+                        "name": "price",
+                        "type": "string"
+                    }
+                ],
+                "name": "ticker",
+                "namespace": "domain.objects",
+                "type": "record"
+            }
+        }
+    ],
+    "name": "position",
+    "namespace": "domain.objects",
+    "type": "record"
+}

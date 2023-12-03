@@ -11,6 +11,6 @@
         }
     ],
     "name": "simulation",
-    "namespace": "domain",
+    "namespace": "domain.objects",
     "type": "record"
 }

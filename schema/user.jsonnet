@@ -1,20 +1,22 @@
 local avro = import 'avro.libsonnet';
 
 local email = avro.Field("email");
-local firstName = avro.Field("firstName");
-local lastName = avro.Field("lastName");
+local first_name = avro.Field("first_name");
+local last_name = avro.Field("last_name");
 
-local address = import 'address.jsonnet';
+local address_record = import 'address.jsonnet';
+
+local address_field = avro.Field("address", address_record, nullable=true);
 
 local user = avro.Record(
     name="user", 
     fields=[
             email, 
-            firstName, 
-            lastName,
-            address
+            first_name, 
+            last_name,
+            address_field
         ], 
-        namespace="domain", 
+        namespace="domain.objects",
         doc="main user object"
     );
 

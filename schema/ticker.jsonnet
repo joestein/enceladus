@@ -9,7 +9,7 @@ local ticker = avro.Record(
             symbol, 
             price
         ], 
-        namespace="domain", 
+        namespace="domain.objects",
         doc="main ticker object"
     );
 

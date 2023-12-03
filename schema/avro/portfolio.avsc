@@ -11,6 +11,6 @@
         }
     ],
     "name": "portfolio",
-    "namespace": "domain",
+    "namespace": "domain.objects",
     "type": "record"
 }

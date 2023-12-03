@@ -6,11 +6,11 @@
             "type": "string"
         },
         {
-            "name": "firstName",
+            "name": "first_name",
             "type": "string"
         },
         {
-            "name": "lastName",
+            "name": "last_name",
             "type": "string"
         },
         {
@@ -27,6 +27,7 @@
                         }
                     ],
                     "name": "preferred",
+                    "namespace": "domain.objects",
                     "type": "record"
                 },
                 "null"
@@ -34,6 +35,6 @@
         }
     ],
     "name": "user",
-    "namespace": "domain",
+    "namespace": "domain.objects",
     "type": "record"
 }

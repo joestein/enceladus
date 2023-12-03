@@ -1,19 +1,14 @@
 {
-    "name": "address",
-    "type": [
+    "fields": [
         {
-            "fields": [
-                {
-                    "name": "street_address",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            ],
-            "name": "preferred",
-            "type": "record"
-        },
-        "null"
-    ]
+            "name": "street_address",
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    ],
+    "name": "preferred",
+    "namespace": "domain.objects",
+    "type": "record"
 }

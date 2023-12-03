@@ -13,7 +13,7 @@ def to_dict(obj):
 class TestUser(unittest.TestCase):
 
     def test_encode_decode(self):
-        user = User(email="test@example.com", firstName="Joe", lastName="Tester")
+        user = User(email="test@example.com", first_name="Joe", last_name="Tester")
 
         file_of_schema = open("schema/avro/user.avsc", "rb")
         schema = avro.schema.parse(file_of_schema.read())
@@ -36,7 +36,7 @@ class TestUser(unittest.TestCase):
 
     def test_address(self):
         address = Address(street_address="123 Elm St.")
-        user = User(email="test@example.com", firstName="Joe", lastName="Tester", address=address)
+        user = User(email="test@example.com", first_name="Joe", last_name="Tester", address=address)
         
         file_of_schema = open("schema/avro/user.avsc", "rb")
         schema = avro.schema.parse(file_of_schema.read())

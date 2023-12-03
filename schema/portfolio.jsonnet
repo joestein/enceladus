@@ -9,7 +9,7 @@ local portfolio = avro.Record(
             label, 
             description
         ], 
-        namespace="domain", 
+        namespace="domain.objects", 
         doc="main portfolio object"
     );
 

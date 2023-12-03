@@ -1,8 +1,8 @@
 class User():
-    def __init__(self, email="", firstName="", lastName="", address=None):
+    def __init__(self, email="", first_name="", last_name="", address=None):
         self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
+        self.first_name = first_name
+        self.last_name = last_name
         self.address = address
 
 class Address():

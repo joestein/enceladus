@@ -9,7 +9,7 @@ local simulation = avro.Record(
             label, 
             description
         ], 
-        namespace="domain", 
+        namespace="domain.objects",
         doc="main simulation object"
     );
 
