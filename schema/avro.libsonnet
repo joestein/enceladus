@@ -14,4 +14,9 @@
         "type": if nullable then [type, "null"] else type,
         [if default != {} then "default"]: default,
     },
+    Array(items)::
+    {
+        "type": "array",
+        "items": items
+    }
 }

@@ -2,60 +2,45 @@ import unittest
 from io import BytesIO
 import avro
 from avro.io import BinaryEncoder, BinaryDecoder, DatumReader
-from domain.objects import User
-from domain.objects import Address
-import json
+from domain.objects import User, Address, Trade, Position, Ticker
+from domain.utils import to_dict, get_avro_schema, avro_bytes_from_object, avro_bytes_to_dict
 
-#handles testing of objects like the address TODO move to utils
-def to_dict(obj):
-    return json.loads(json.dumps(obj, default=lambda o: o.__dict__))
+def avro_write_read(avsc, object):
+    schema = get_avro_schema(avsc)
 
-class TestUser(unittest.TestCase):
+    raw_bytes = avro_bytes_from_object(schema, object)
 
-    def test_encode_decode(self):
+    return avro_bytes_to_dict(schema, raw_bytes)
+
+class TestSchemas(unittest.TestCase):
+
+    def test_user(self):
         user = User(email="test@example.com", first_name="Joe", last_name="Tester")
 
-        file_of_schema = open("schema/avro/user.avsc", "rb")
-        schema = avro.schema.parse(file_of_schema.read())
-        file_of_schema.close()
+        read = avro_write_read("schema/avro/user.avsc", user)
 
-        writer = avro.io.DatumWriter(schema)
+        self.assertEqual(to_dict(user), read)
 
-        bytes_writer = BytesIO()
-        encoder = BinaryEncoder(bytes_writer)
-        writer.write(to_dict(user), encoder)
-
-        raw_bytes = bytes_writer.getvalue()
-
-        bytes_reader = BytesIO(raw_bytes)
-        decoder = BinaryDecoder(bytes_reader)
-        reader = DatumReader(schema)
-        user_read = reader.read(decoder)
-
-        self.assertEqual(to_dict(user), user_read)
-
-    def test_address(self):
+    def test_address_embedded_user(self):
         address = Address(street_address="123 Elm St.")
         user = User(email="test@example.com", first_name="Joe", last_name="Tester", address=address)
         
-        file_of_schema = open("schema/avro/user.avsc", "rb")
-        schema = avro.schema.parse(file_of_schema.read())
-        file_of_schema.close()
+        read = avro_write_read("schema/avro/user.avsc", user)
 
-        writer = avro.io.DatumWriter(schema)
+        self.assertEqual(to_dict(user), read) 
 
-        bytes_writer = BytesIO()
-        encoder = BinaryEncoder(bytes_writer)
-        writer.write(to_dict(user), encoder)
+    def test_position_array_trade_nested_ticker(self):
+        ticker1 = Ticker(symbol="AAPL", price="190.23")
+        ticker2 = Ticker(symbol="XYZ", price="23.23")
 
-        raw_bytes = bytes_writer.getvalue()
+        trade1 = Trade(ticker=ticker1, total_purchase=10, purchase_date="2023-12-3")
+        trade2 = Trade(ticker=ticker2, total_purchase=10, purchase_date="2023-12-3")
+        
+        position = Position(holding=[trade1, trade2])
+        
+        read = avro_write_read("schema/avro/position.avsc", position)
 
-        bytes_reader = BytesIO(raw_bytes)
-        decoder = BinaryDecoder(bytes_reader)
-        reader = DatumReader(schema)
-        user_read = reader.read(decoder)
-
-        self.assertEqual(to_dict(user), user_read)     
+        self.assertEqual(to_dict(position), read) 
 
 if __name__ == '__main__':
     unittest.main()

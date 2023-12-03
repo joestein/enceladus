@@ -1,7 +1,7 @@
 local avro = import 'avro.libsonnet';
 
-local label = avro.Field("symbol");
-local description = avro.Field("price");
+local label = avro.Field("label");
+local description = avro.Field("description");
 
 local simulation = avro.Record(
     name="simulation", 

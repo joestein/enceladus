@@ -1,15 +1,13 @@
 local avro = import 'avro.libsonnet';
+local trade_record = import 'trade.jsonnet';
 
-local ticker_record = import 'ticker.jsonnet';
-
-local ticker_field = avro.Field(name="ticker", type=ticker_record);
-local bought_at = avro.Field("boughtAt");
+local trades = avro.Array(trade_record);
+local holding = avro.Field("holding", type=trades, doc="what trades where made we still have to execute on");
 
 local position = avro.Record(
     name="position", 
     fields=[
-            ticker_field,
-            bought_at
+            holding
         ], 
         namespace="domain.objects", 
         doc="main position object"

@@ -2,11 +2,11 @@
     "doc": "main portfolio object",
     "fields": [
         {
-            "name": "symbol",
+            "name": "label",
             "type": "string"
         },
         {
-            "name": "price",
+            "name": "description",
             "type": "string"
         }
     ],

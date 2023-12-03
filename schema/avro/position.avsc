@@ -2,22 +2,48 @@
     "doc": "main position object",
     "fields": [
         {
-            "name": "price",
+            "doc": "what trades where made we still have to execute on",
+            "name": "holding",
             "type": {
-                "doc": "main ticker object",
-                "fields": [
-                    {
-                        "name": "symbol",
-                        "type": "string"
-                    },
-                    {
-                        "name": "price",
-                        "type": "string"
-                    }
-                ],
-                "name": "ticker",
-                "namespace": "domain.objects",
-                "type": "record"
+                "items": {
+                    "doc": "main trade object",
+                    "fields": [
+                        {
+                            "name": "ticker",
+                            "type": {
+                                "doc": "main ticker object",
+                                "fields": [
+                                    {
+                                        "name": "symbol",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "price",
+                                        "type": "string"
+                                    }
+                                ],
+                                "name": "ticker",
+                                "namespace": "domain.objects",
+                                "type": "record"
+                            }
+                        },
+                        {
+                            "name": "total_purchase",
+                            "type": "int"
+                        },
+                        {
+                            "name": "purchase_date",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    ],
+                    "name": "trade",
+                    "namespace": "domain.objects",
+                    "type": "record"
+                },
+                "type": "array"
             }
         }
     ],
